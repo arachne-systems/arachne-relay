@@ -1,0 +1,12 @@
+services:
+  relay:
+    build: .
+    image: arachne-iroh-relay:dev
+    command: ["--dev"]
+    ports:
+      - "${RELAY_BIND_ADDRESS:-127.0.0.1}:3340:3340/tcp"
+    user: "65532:65532"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
